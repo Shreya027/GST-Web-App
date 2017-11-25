@@ -1,1 +1,1 @@
-# GST-Web-App
+Developed a Web App for allowing retailers to create an inventory and automate GST calculations. It includes a javascript Barcode Scanner to scan product barcodes. Bills are generated based on HSN code , CGST, IGST and SGST values of the product stored in the database.
