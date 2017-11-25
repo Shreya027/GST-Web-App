@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700" rel="stylesheet">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Place search pagination</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+      #right-panel select {
+        width: 100%;
+      }
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        right: 5px;
+        top: 60%;
+        margin-top: -195px;
+        height: 330px;
+        width: 200px;
+        padding: 5px;
+        z-index: 5;
+        border: 1px solid #999;
+        background: #fff;
+      }
+      h2 {
+        font-size: 22px;
+        margin: 0 0 5px 0;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        height: 271px;
+        width: 200px;
+        overflow-y: scroll;
+      }
+      li {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      li:nth-child(odd) {
+        background-color: #fcfcfc;
+      }
+      #back {
+        position: absolute;
+        top:40px;
+        left: 1160px;
+        background-color:yellow;
+        padding: 20px;
+        color: white;
+      }
+      .controls {
+        background-color: #fff;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        height: 44px;
+        position: absolute;;
+          left: 240px;
+        top: 220px;
+        outline: none;
+       
+        text-overflow: ellipsis;
+        width: 400px;
+        margin: 10px;
+      }
+      #more {
+        width: 100%;
+        margin: 5px 0 0 0;
+      }
+    </style>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      var map;
+      var pyrmont={lat:19.1154,lng:72.9091};
+      function initMap() {
+   
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 10
+        });
+        var input = document.getElementById('pac-input');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        autocomplete.addListener('place_changed', function() {
+          /*infowindow.close();*/
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            return;
+          }
+          
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);
+          }
+          
+          addMarker (place.place_id , place.geometry.location ,map,place);
+            
+        
+          // Set the position of the marker using the place ID and location.
+          
+          });
+                  function addMarker (a ,b, map,place)
+          {
+          var marker = new google.maps.Marker({
+          map: map,
+          attribution: {
+          source: 'Travel'
+          },
+          place:
+          {
+            placeId: a,
+            location: b
+          }
+          });  
+          marker.setVisible(true);
+          var infowindow = new google.maps.InfoWindow();
+         
+          infowindow.setContent('<div><strong>'+ place.name+ '</strong><br>' +
+              place.formatted_address + '<br>' + b+ '<div>');
+          marker.addListener('click', function() {
+          infowindow.open(map, marker);
+          });
+              var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: b,
+          radius: 2500,
+          type: ['local_government_office']
+        }, processResults);
+           
+          }
+    
+      }
+      function processResults(results, status, pagination) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+          return;
+        } else {
+          createMarkers(results);
+          if (pagination.hasNextPage) {
+            var moreButton = document.getElementById('more');
+            moreButton.disabled = false;
+            moreButton.addEventListener('click', function() {
+              moreButton.disabled = true;
+              pagination.nextPage();
+            });
+          }
+        }
+      }
+      function createMarkers(places) {
+        var bounds = new google.maps.LatLngBounds();
+        var placesList = document.getElementById('places');
+        for (var i = 0, place; place = places[i]; i++) {
+          var image = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+          };
+          var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name,
+            position: place.geometry.location
+          });
+          placesList.innerHTML += '<li>' + place.name + '</li>';
+          bounds.extend(place.geometry.location);
+        }
+        map.fitBounds(bounds);
+      }
+    </script>
+  </head>
+  <body>
+   <input id="pac-input" class="controls" type="text"
+        placeholder="Enter a location">
+    <div id="map"></div>
+    <div id="back"><a href="/about/">Back</a></div>
+    <div id="right-panel">
+      <h2>Results</h2>
+      <ul id="places"></ul>
+      <button id="more">More results</button>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvCg-Ed0uayEUcNWIgVb_6pRV8imB5kEM&libraries=places&callback=initMap" async defer></script>
+  </body>
+</html>

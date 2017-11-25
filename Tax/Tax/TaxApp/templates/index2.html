@@ -1,0 +1,273 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>LINK - Agency Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="{% static 'js/modernizr.custom.js' %}"></script>
+
+
+
+        <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' % }"></script>
+    <script src="{% static 'js/main.js' % }"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' % }"></script>
+    <script src="{% static 'js/imagesloaded.js' % }"></script>
+    <script src="{% static 'js/classie.js' % }"></script>
+    <script src="{% static 'js/AnimOnScroll.js' % }"></script>
+    <script>
+        new AnimOnScroll( document.getElementById( 'process' ), {
+            minDuration : 0.4,
+            maxDuration : 0.7,
+            viewportFactor : 0.2
+        } );
+    </script>
+
+
+
+    <style type="text/css">
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+    </style>
+    
+  </head>
+
+  <body>
+
+    <!-- Menu -->
+
+    
+    <!-- MAIN IMAGE SECTION 
+barcode scanner code
+
+
+    -->
+
+<head>
+
+
+        <meta charset="UTF-8">
+        <title>WebCodeCamJS</title>
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+
+        
+
+<ul style="left:0px;right:0px ;position: absolute;
+    left: 0px;
+    top: 0px;">
+  <li><a href="/index/">Home</a></li>
+  <li><a class="active" href="/index2/">Scan</a></li>
+  <li><a href="/inventory/">Inventory</a></li>
+  <li><a href="/bill/">Bill</a></li>
+  <li><a href="/maps/">Maps</a></li>
+    <li><a href="/logout_page/">Logout</a></li>
+</ul>
+
+      <div >
+        <div class="container" id="QR-Code"  >
+            <div class="panel panel-info">
+                <div class="panel-heading"  style="color:rgb(26, 187, 155)">
+                    
+                    <div class="navbar-form navbar-right">
+                        <select class="form-control" id="camera-select"></select>
+                        <div class="form-group">
+                            <input id="image-url" type="text" class="form-control" placeholder="Image url">
+                            <button title="Decode Image" class="btn btn-default btn-sm" id="decode-img" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-upload"></span></button>
+                            <button title="Image shoot" class="btn btn-info btn-sm disabled" id="grab-img" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"></span></button>
+                            <button title="Play" class="btn btn-success btn-sm" id="play" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-play"></span></button>
+                            <button title="Pause" class="btn btn-warning btn-sm" id="pause" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-pause"></span></button>
+                            <button title="Stop streams" class="btn btn-danger btn-sm" id="stop" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-stop"></span></button>
+                         </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center" style="background-color:rgb(26, 187, 155) ">
+                    <div class="col-md-6" style="background-color:rgb(26, 187, 155) ">
+                        <div class="well" style="position: relative;display: inline-block;">
+                            <canvas width="320" height="240" id="webcodecam-canvas"></canvas>
+                            <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
+                            <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
+                            <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
+                            <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
+                        </div>
+                  
+                    </div>
+                    <div class="col-md-6" style="background-color:rgb(26, 187, 155) ">
+                        <div class="thumbnail" id="result" style="background-color:rgb(26, 187, 155) ">
+                            <div class="well">
+                                <img width="320" height="240" id="scanned-img" src="">
+                            </div>
+                            <div class="caption" style="background-color:rgb(26, 187, 155) ">
+                                <!--<h3>Scanned result</h3>-->
+                          <p id="scanned-QR" ></p>
+                              
+                        <form action="" method="get" id="form2sub" >
+       <div hidden> <input  type="text" name="q" value="" id="hello" ></div>
+     
+ <strong>COUNT :</strong><input  type="text" name="count" value="" style="padding:5px;width:120px;margin:3px">
+         <br>
+         <br>
+            <select name="states" style="padding:15px;width:200px;margin:10px">
+    <option value="Maharashtra" selected>Maharashtra</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Gujarat" >Gujarat</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+  </select>
+  <br>
+  <br>
+        <input type="submit" value="Submit" onclick="hi();" style="padding:10px;width:200px;margin:5px">
+      
+    </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         
+        </div>
+        </div>
+
+<script type="text/javascript">
+
+function hi() {
+    var a=document.getElementById("scanned-QR").innerText;
+    document.getElementById("hello").setAttribute("value", a);
+       document.getElementById("form2sub").submit();
+
+
+}
+   
+</script>
+
+<script language="javascript">
+    var js_var = "{% static 'js/DecoderWorker.js' %}";
+    var audio_var = "{% static 'audio/beep.mp3' %}";
+    
+</script>
+
+        <script type="text/javascript" src="{% static 'js/filereader.js' %}"></script>
+        <!-- Using jquery version: -->
+        <!--
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/qrcodelib.js"></script>
+            <script type="text/javascript" src="js/webcodecamjquery.js"></script>
+            <script type="text/javascript" src="js/mainjquery.js"></script>
+        -->
+        <script type="text/javascript" src="{% static 'js/qrcodelib.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/webcodecamjs.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+    <div id="serviceswrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>We Redefine The Power<br/>
+                        Of Design
+                    </h2>
+                </div>
+            </div><!-- row -->
+    <!--    </div><!-- /container -->
+    <!--</div><!-- /headerwrap -->
+
+    <!-- PROCESS SECTION -->
+
+
+
+    
+    
+    
+    
+    
+    <!-- CALL TO ACTION -->
+    
+    
+    
+    
+    
+    <!-- CONTACT FOOTER --->-->
+    <div id="cf">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4">
+                    
+                </div><!--col-lg-4-->
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- Contact Footer -->
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+
+  </body>
+</html>
