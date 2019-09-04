@@ -9,7 +9,7 @@ Developed a Web App for allowing retailers to create an inventory and automate G
 
 
 ## Screenshots
-![Home Page](https://i.imgur.com/a/NLPkB4S.png)
+![Home Page](https://i.imgur.com/Eh7XJe2.png)
 ![Inventory Form](https://i.imgur.com/a/c6huwWB.png)
 ![Product Scanner](https://i.imgur.com/a/6sgD7AL.png)
 ![Bill Generation](https://i.imgur.com/a/nPY3hM4.png)
