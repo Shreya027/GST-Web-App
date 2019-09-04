@@ -5,11 +5,11 @@ Developed a Web App for allowing retailers to create an inventory and automate G
 ## Tech Stack
 - **Django Backend**
 - **HTML, CSS and Bootstrap**
-- **Javascript Barcode Scanner**
+- **Javascript**
 
 
 ## Screenshots
-![Home Page](https://imgur.com/a/NLPkB4S)
-![Inventory Form](https://imgur.com/a/c6huwWB)
-![Product Scanner](https://imgur.com/a/6sgD7AL)
-![Bill Generation](https://imgur.com/a/nPY3hM4)
+![Home Page](https://imgur.com/a/NLPkB4S.png)
+![Inventory Form](https://imgur.com/a/c6huwWB.png)
+![Product Scanner](https://imgur.com/a/6sgD7AL.png)
+![Bill Generation](https://imgur.com/a/nPY3hM4.png)
